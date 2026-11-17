@@ -1,0 +1,27 @@
+version: "2"
+linters:
+  enable:
+    - misspell
+    - modernize
+    - revive
+    - sloglint
+  disable:
+    - unused
+  settings:
+    errcheck:
+      exclude-functions:
+        - (net/http.ResponseWriter).Write
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - linters:
+          - errcheck
+        path: _test.go
+formatters:
+  exclusions:
+    generated: lax
